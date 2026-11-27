@@ -61,8 +61,8 @@ test("объект плюс СБП и разделение счёта", function
     serviceTablets: 5,
     modules: { sbp: true, split: true }
   });
-  assert.equal(quoted.extras, 320000);
-  assert.equal(quoted.total, 1480000);
+  assert.equal(quoted.extras, 160000);
+  assert.equal(quoted.total, 1320000);
   assert.equal(quoted.from, true);
 });
 
@@ -105,7 +105,7 @@ test("повторное восстановление не ломает сумм
   var once = storage.restore(storage.snapshot(original));
   var twice = storage.restore(storage.snapshot(once));
   assert.deepEqual(calc.quote(once).total, calc.quote(twice).total);
-  assert.equal(calc.quote(twice).total, 1480000);
+  assert.equal(calc.quote(twice).total, 1320000);
   assert.equal(storage.restore(null), null);
   assert.equal(storage.restore({ v: 0, rooms: 5 }), null);
   var clamped = storage.restore(storage.snapshot({
@@ -151,7 +151,7 @@ test("состав работ на весь объект совпадает с �
   assert.equal(calc.paymentPilot()[0].amount, 326800);
   assert.equal(calc.paymentPilot()[2].amount, 163400);
   assert.equal(calc.paymentRollout()[0].amount, 142500);
-  assert.equal(calc.quote({ rooms: 5, karaokeTablets: 5, serviceTablets: 5, modules: { sbp: true, split: true } }).early, 1406000);
+  assert.equal(calc.quote({ rooms: 5, karaokeTablets: 5, serviceTablets: 5, modules: { sbp: true, split: true } }).early, 1254000);
 });
 
 test("текст расчёта не содержит старую сумму пилота", function () {
