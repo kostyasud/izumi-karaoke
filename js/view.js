@@ -153,8 +153,7 @@
     return '<section class="band band-night demo" id="demo">' +
       '<div class="wrap">' +
         '<div class="demo-head"><div><h2>Попробуйте будущий интерфейс</h2>' +
-        '<p class="lead">Интерактивная демонстрация сценариев. Она не подключена к оборудованию, iiko или AI-сервисам.</p></div>' +
-        '<button type="button" class="btn btn-line" id="demo-reset">Сбросить демонстрацию</button></div>' +
+        '<p class="lead">Интерактивная демонстрация сценариев. Она не подключена к оборудованию, iiko или AI-сервисам.</p></div></div>' +
         '<div class="tabs" role="tablist">' +
           tabBtn("karaoke", "Караоке и звук", tab) +
           tabBtn("order", "Меню и заказ", tab) +

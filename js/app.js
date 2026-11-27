@@ -287,7 +287,6 @@
     if (event.target.closest && event.target.closest("#sound-reset")) { demo.resetSound(); return; }
     if (event.target.closest && event.target.closest("#karaoke-help")) { demo.helpRequest(); toast("Обращение появилось в демонстрационной панели персонала."); return; }
     if (event.target.closest && event.target.closest("#send-order")) { demo.submitOrder(); return; }
-    if (event.target.closest && event.target.closest("#demo-reset")) { demo.reset(); toast("Демонстрация очищена."); return; }
     if (event.target.closest && event.target.closest("#end-session")) { ui.endAsk = true; paintOverlays(); return; }
     if (event.target.closest && event.target.closest("#end-yes")) { ui.endAsk = false; demo.reset(); paintOverlays(); return; }
     if (event.target.closest && event.target.closest("#end-no")) { ui.endAsk = false; paintOverlays(); return; }
