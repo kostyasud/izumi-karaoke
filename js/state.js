@@ -8,6 +8,7 @@
     rooms: full.rooms,
     karaokeTablets: full.karaokeTablets,
     serviceTablets: full.serviceTablets,
+    soundDevices: full.soundDevices,
     modules: full.modules,
     mode: "full",
     confirm: null
@@ -17,8 +18,9 @@
     state.rooms = saved.rooms;
     state.karaokeTablets = saved.karaokeTablets;
     state.serviceTablets = saved.serviceTablets;
+    state.soundDevices = saved.soundDevices;
     state.modules = saved.modules;
-    state.mode = calc.detectMode(saved.rooms, saved.karaokeTablets, saved.serviceTablets);
+    state.mode = calc.detectMode(saved.rooms, saved.karaokeTablets, saved.serviceTablets, saved.soundDevices);
   }
 
   function emit() {
@@ -31,6 +33,7 @@
     state.rooms = quoted.rooms;
     state.karaokeTablets = quoted.karaokeTablets;
     state.serviceTablets = quoted.serviceTablets;
+    state.soundDevices = quoted.soundDevices;
     state.modules = quoted.modules;
   }
 
@@ -40,6 +43,7 @@
       rooms: state.rooms,
       karaokeTablets: state.karaokeTablets,
       serviceTablets: state.serviceTablets,
+      soundDevices: state.soundDevices,
       modules: state.modules,
       mode: state.mode,
       confirm: state.confirm,
@@ -58,6 +62,7 @@
   function setTablets(kind, value) {
     if (kind === "karaoke") state.karaokeTablets = value;
     if (kind === "service") state.serviceTablets = value;
+    if (kind === "sound") state.soundDevices = value;
     state.mode = "custom";
     state.confirm = null;
     applyQuote();
@@ -69,11 +74,13 @@
       state.rooms = 1;
       state.karaokeTablets = 0;
       state.serviceTablets = 1;
+      state.soundDevices = 0;
       state.mode = "pilot";
     } else if (mode === "full") {
       state.rooms = 5;
       state.karaokeTablets = 0;
       state.serviceTablets = 5;
+      state.soundDevices = 0;
       state.mode = "full";
     }
     state.confirm = null;
@@ -106,6 +113,7 @@
     state.rooms = 5;
     state.karaokeTablets = 0;
     state.serviceTablets = 5;
+    state.soundDevices = 0;
     state.modules = calc.emptyModules();
     state.mode = "full";
     state.confirm = null;

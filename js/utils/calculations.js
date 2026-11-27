@@ -40,12 +40,13 @@
     return pricing.platformWork + pricing.perRoomWork * clampRooms(rooms);
   }
 
-  function equipmentCost(rooms, karaokeTablets, serviceTablets) {
+  function equipmentCost(rooms, karaokeTablets, serviceTablets, soundDevices) {
     var count = clampRooms(rooms);
     return pricing.sharedInfra
       + pricing.perRoomEquip * count
       + pricing.tabletKaraoke * clampTablets(karaokeTablets, count)
-      + pricing.tabletService * clampTablets(serviceTablets, count);
+      + pricing.tabletService * clampTablets(serviceTablets, count)
+      + pricing.soundDevice * clampTablets(soundDevices, count);
   }
 
   function modulePrice(id) {
@@ -65,14 +66,16 @@
     var rooms = clampRooms(source.rooms);
     var karaokeTablets = clampTablets(source.karaokeTablets, rooms);
     var serviceTablets = clampTablets(source.serviceTablets, rooms);
+    var soundDevices = clampTablets(source.soundDevices, rooms);
     var modules = normalizeModules(source.modules);
     var works = worksCost(rooms);
-    var equipment = equipmentCost(rooms, karaokeTablets, serviceTablets);
+    var equipment = equipmentCost(rooms, karaokeTablets, serviceTablets, soundDevices);
     var extras = modulesCost(modules);
     return {
       rooms: rooms,
       karaokeTablets: karaokeTablets,
       serviceTablets: serviceTablets,
+      soundDevices: soundDevices,
       modules: modules,
       works: works,
       equipment: equipment,
@@ -96,10 +99,11 @@
     return fullQuote().total - pilotQuote().total;
   }
 
-  function detectMode(rooms, karaokeTablets, serviceTablets, explicit) {
+  function detectMode(rooms, karaokeTablets, serviceTablets, soundDevices, explicit) {
     if (explicit === "custom") return "custom";
-    if (rooms === 1 && karaokeTablets === 0 && serviceTablets === 1) return "pilot";
-    if (rooms === 5 && karaokeTablets === 0 && serviceTablets === 5) return "full";
+    var sound = clampTablets(soundDevices, clampRooms(rooms));
+    if (rooms === 1 && karaokeTablets === 0 && serviceTablets === 1 && sound === 0) return "pilot";
+    if (rooms === 5 && karaokeTablets === 0 && serviceTablets === 5 && sound === 0) return "full";
     return "custom";
   }
 

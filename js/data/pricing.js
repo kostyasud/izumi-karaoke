@@ -15,6 +15,7 @@
     roomParts: [],
     tabletKaraoke: 32000,
     tabletService: 22000,
+    soundDevice: 56000,
     supportMonthly: 25000,
     modules: [
       {

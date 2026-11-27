@@ -386,6 +386,7 @@
     var lines = [];
     if (quoted.karaokeTablets) lines.push(billPart("Планшет «Караоке»", pricing.tabletKaraoke * quoted.karaokeTablets, quoted.karaokeTablets, "", "только если решите заменить iPad mini 4"));
     if (quoted.serviceTablets) lines.push(billPart("Планшет заказа и AI", pricing.tabletService * quoted.serviceTablets, quoted.serviceTablets, "", "отдельный планшет с браузером. iPad mini 4 не меняем"));
+    if (quoted.soundDevices) lines.push(billPart("Прибор управления звуком", pricing.soundDevice * quoted.soundDevices, quoted.soundDevices, "", "цифровой прибор с управлением по сети, например Behringer XR18. Тогда громкость и эхо крутятся с планшета"));
     pricing.roomParts.forEach(function (part) {
       lines.push(billPart(part.title, part.amount * quoted.rooms, quoted.rooms, part.id === "mixer" ? "mixer" : "", part.model || ""));
     });
@@ -438,6 +439,8 @@
       stepper("Комнат", state.rooms, "rooms", 1, 5) +
       stepper("Новые планшеты «Караоке»", state.karaokeTablets, "karaoke", 0, state.rooms) +
       stepper("Новые планшеты «Сервис»", state.serviceTablets, "service", 0, state.rooms) +
+      stepper("Приборы управления звуком", state.soundDevices, "sound", 0, state.rooms) +
+      '<p class="note">Необязательно, по одному на комнату. С ним громкость и эхо крутятся с планшета. Ориентир ' + m(pricing.soundDevice) + ' за штуку: цифровой прибор с управлением по сети, например Behringer XR18.</p>' +
       bill(quoted) +
       '<h3 class="bill-next">Можно добавить</h3>' +
       '<div class="modules">' + pricing.modules.map(function (item) {
@@ -550,7 +553,7 @@
     var chosen = pricing.modules.filter(function (item) { return quoted.modules[item.id]; });
     return '<div class="modal" id="summary-modal"><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="summary-title">' +
       '<h2 id="summary-title">Итог конфигурации</h2>' +
-      '<p>Комнат: ' + quoted.rooms + '. Новые планшеты «Караоке»: ' + quoted.karaokeTablets + '. Новые планшеты «Сервис»: ' + quoted.serviceTablets + '.</p>' +
+      '<p>Комнат: ' + quoted.rooms + '. Новые планшеты «Караоке»: ' + quoted.karaokeTablets + '. Новые планшеты «Сервис»: ' + quoted.serviceTablets + '. Приборы управления звуком: ' + quoted.soundDevices + '.</p>' +
       '<p>Модули: ' + (chosen.length ? chosen.map(function (item) { return t(item.title) + " — от " + m(item.price); }).join("; ") : "не выбраны") + '.</p>' +
       '<p><b>' + (quoted.from ? "К договору от " : "К договору: ") + m(quoted.early) + '</b></p>' +
       '<p>Без скидки\u00A0— ' + m(quoted.total) + '. Скидка 5% до ' + t(pricing.earlyDiscountUntil) + '.</p>' +

@@ -24,6 +24,7 @@
     }
     if (quoted.karaokeTablets) push("Планшет «Караоке»", pricing.tabletKaraoke * quoted.karaokeTablets, quoted.karaokeTablets, "только если решите заменить iPad mini 4");
     if (quoted.serviceTablets) push("Планшет заказа и AI", pricing.tabletService * quoted.serviceTablets, quoted.serviceTablets, "отдельный планшет с браузером. iPad mini 4 не меняем");
+    if (quoted.soundDevices) push("Прибор управления звуком", pricing.soundDevice * quoted.soundDevices, quoted.soundDevices, "цифровой прибор с управлением по сети, например Behringer XR18");
     pricing.roomParts.forEach(function (part) {
       push(part.title, part.amount * quoted.rooms, quoted.rooms, part.model || "");
     });
@@ -45,6 +46,7 @@
       "Комнат: " + quoted.rooms,
       "Новые планшеты «Караоке»: " + quoted.karaokeTablets,
       "Новые планшеты «Сервис»: " + quoted.serviceTablets,
+      "Приборы управления звуком: " + quoted.soundDevices,
       "",
       "Работы: " + money.formatMoney(quoted.works),
       "Дополнительные модули — минимальная оценка: " + (quoted.extras ? "от " + money.formatMoney(quoted.extras) : money.formatMoney(0)),

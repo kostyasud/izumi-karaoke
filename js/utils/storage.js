@@ -13,6 +13,7 @@
       rooms: quoted.rooms,
       karaokeTablets: quoted.karaokeTablets,
       serviceTablets: quoted.serviceTablets,
+      soundDevices: quoted.soundDevices,
       modules: quoted.modules
     };
   }
@@ -24,12 +25,14 @@
       rooms: raw.rooms,
       karaokeTablets: raw.karaokeTablets,
       serviceTablets: raw.serviceTablets,
+      soundDevices: raw.soundDevices,
       modules: raw.modules
     });
     return {
       rooms: quoted.rooms,
       karaokeTablets: quoted.karaokeTablets,
       serviceTablets: quoted.serviceTablets,
+      soundDevices: quoted.soundDevices,
       modules: quoted.modules,
       mode: "custom"
     };

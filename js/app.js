@@ -247,6 +247,7 @@
       if (kind === "rooms") stateApi.setRooms(current.rooms + delta);
       if (kind === "karaoke") stateApi.setTablets("karaoke", current.karaokeTablets + delta);
       if (kind === "service") stateApi.setTablets("service", current.serviceTablets + delta);
+      if (kind === "sound") stateApi.setTablets("sound", current.soundDevices + delta);
       return;
     }
     var mode = event.target.closest && event.target.closest("[data-mode]");

@@ -31,6 +31,18 @@ test("пилот без модулей", function () {
   assert.equal(quoted.early, 817000);
 });
 
+test("прибор управления звуком необязателен и входит только в закупку", function () {
+  var off = calc.fullQuote();
+  assert.equal(off.soundDevices, 0);
+  assert.equal(off.equipment, 110000);
+  assert.equal(off.total, 1160000);
+  var on = calc.quote({ rooms: 5, karaokeTablets: 0, serviceTablets: 5, soundDevices: 5, modules: {} });
+  assert.equal(on.soundDevices, 5);
+  assert.equal(on.equipment, 110000 + 56000 * 5);
+  assert.equal(on.total, 1160000);
+  assert.equal(on.early, 1102000);
+});
+
 test("пять комнат без новых планшетов", function () {
   var quoted = calc.quote({ rooms: 5, karaokeTablets: 0, serviceTablets: 0, modules: {} });
   assert.equal(quoted.equipment, 0);
