@@ -3,6 +3,8 @@
     schemaVersion: 1,
     proposalDate: "27 ноября 2026 года",
     validDays: 15,
+    earlyDiscountRate: 0.05,
+    earlyDiscountUntil: "11 декабря 2026 года",
     roomsMin: 1,
     roomsMax: 5,
     platformWork: 785000,

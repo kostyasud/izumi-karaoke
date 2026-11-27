@@ -78,6 +78,7 @@
       equipment: equipment,
       extras: extras,
       total: works + extras,
+      early: earlyPrice(works + extras),
       from: extras > 0,
       research: modules.singing === true
     };
@@ -124,8 +125,13 @@
     return next;
   }
 
+  function earlyPrice(amount) {
+    var rate = pricing.earlyDiscountRate || 0;
+    return amount - Math.round(amount * rate);
+  }
+
   function paymentPilot() {
-    var works = worksCost(1);
+    var works = earlyPrice(worksCost(1));
     var part = Math.round(works * 0.4);
     return [
       { share: "40%", amount: part, when: "при подписании" },
@@ -135,7 +141,7 @@
   }
 
   function paymentRollout() {
-    var delta = worksCost(5) - worksCost(1);
+    var delta = earlyPrice(worksCost(5) - worksCost(1));
     var half = Math.round(delta / 2);
     return [
       { share: "50%", amount: half, when: "перед началом" },
@@ -155,6 +161,7 @@
     worksCost: worksCost,
     equipmentCost: equipmentCost,
     modulesCost: modulesCost,
+    earlyPrice: earlyPrice,
     quote: quote,
     pilotQuote: pilotQuote,
     fullQuote: fullQuote,

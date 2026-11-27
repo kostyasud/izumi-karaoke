@@ -310,6 +310,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 44px
 }
 .bill-row { padding: 10px 0; border-bottom: 1px solid var(--line); }
 .bill-row b { font-size: 22px; letter-spacing: -0.03em; white-space: nowrap; }
+.bill-was b { color: var(--text-muted); font-size: 16px; font-weight: 500; text-decoration: line-through; }
 .bill-parts { list-style: none; margin: 0; padding: 2px 0 2px 18px; border-bottom: 1px solid var(--line); }
 .bill-part { padding: 5px 0; color: var(--text-muted); font-size: 15px; align-items: flex-start; }
 .bill-part small { display: block; margin-top: 1px; font-size: 13px; color: var(--text-muted); }

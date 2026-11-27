@@ -49,6 +49,7 @@
       "Работы: " + money.formatMoney(quoted.works),
       "Дополнительные модули — минимальная оценка: " + (quoted.extras ? "от " + money.formatMoney(quoted.extras) : money.formatMoney(0)),
       budgetLabel + money.formatMoney(quoted.total),
+      "К договору до " + pricing.earlyDiscountUntil + ", скидка 5%: " + (quoted.from ? "от " : "") + money.formatMoney(quoted.early),
       "",
       "Закупка заведения, в нашу стоимость не входит:"
     ];

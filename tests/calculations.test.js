@@ -17,6 +17,7 @@ test("полный объект без модулей", function () {
   assert.equal(quoted.works, 1160000);
   assert.equal(quoted.equipment, 110000);
   assert.equal(quoted.total, 1160000);
+  assert.equal(quoted.early, 1102000);
   assert.equal(quoted.from, false);
 });
 
@@ -27,6 +28,7 @@ test("пилот без модулей", function () {
   assert.equal(quoted.serviceTablets, 1);
   assert.equal(quoted.equipment, 22000);
   assert.equal(quoted.total, 860000);
+  assert.equal(quoted.early, 817000);
 });
 
 test("пять комнат без новых планшетов", function () {
@@ -134,9 +136,10 @@ test("разные модификаторы не сливаются в одну 
 test("состав работ на весь объект совпадает с формулой пяти комнат", function () {
   assert.equal(calc.scopeTotal(), 1160000);
   assert.equal(calc.worksCost(5), calc.scopeTotal());
-  assert.equal(calc.paymentPilot()[0].amount, 344000);
-  assert.equal(calc.paymentPilot()[2].amount, 172000);
-  assert.equal(calc.paymentRollout()[0].amount, 150000);
+  assert.equal(calc.paymentPilot()[0].amount, 326800);
+  assert.equal(calc.paymentPilot()[2].amount, 163400);
+  assert.equal(calc.paymentRollout()[0].amount, 142500);
+  assert.equal(calc.quote({ rooms: 5, karaokeTablets: 5, serviceTablets: 5, modules: { sbp: true, split: true } }).early, 1406000);
 });
 
 test("текст расчёта не содержит старую сумму пилота", function () {

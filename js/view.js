@@ -79,7 +79,7 @@
           metric(full.rooms + " комнат", "единая платформа управления") +
           metric(full.serviceTablets + " новых планшетов", "заказ и AI, караоке остаётся на iPad mini 4") +
           metric("8–9 недель", "ориентир запуска пилота") +
-          metric(m(full.total), "наши работы на весь объект", "Оборудование в эту сумму не входит.") +
+          metric(m(full.early), "к договору до 11 декабря", "Без скидки " + m(full.total) + ". Оборудование в эту сумму не входит.") +
         '</div></div>' +
       '</div></section>';
   }
@@ -360,6 +360,7 @@
           '</article>';
       }).join("") +
       '</div><p class="scope-sum"><span>Работы на весь объект</span><b>' + m(calc.scopeTotal()) + '</b></p>' +
+      '<p class="scope-sum"><span>К договору до 11 декабря, −5%</span><b>' + m(calc.earlyPrice(calc.scopeTotal())) + '</b></p>' +
       '<p class="rule">Один ресторанный контур iiko и один действующий контур ReMarked ' + tip("remarked") + '. Дополнительные лицензии сторонних систем оплачиваются отдельно.</p></div></section>';
   }
 
@@ -400,9 +401,13 @@
         }).join("") + '</ul>';
       totalLabel = "Вместе";
     }
+    var prefix = quoted.from ? "от " : "";
     return '<article class="bill">' +
       extras +
-      '<div class="bill-total"><span>' + totalLabel + '</span><b>' + (quoted.from ? "от " : "") + m(quoted.total) + '</b></div>' +
+      '<div class="bill-row bill-was"><span>' + totalLabel + '</span><b>' + prefix + m(quoted.total) + '</b></div>' +
+      '<div class="bill-row"><span>−5% до 11 декабря</span><b>−' + m(quoted.total - quoted.early) + '</b></div>' +
+      '<div class="bill-total"><span>К договору</span><b>' + prefix + m(quoted.early) + '</b></div>' +
+      '<p class="bill-note">Скидка на наши работы, если договор подписан до ' + t(pricing.earlyDiscountUntil) + '. Закупка в неё не входит.</p>' +
       '<p class="bill-label">Купить самостоятельно</p>' +
       '<ul class="bill-parts">' + equipmentBill(quoted) + '</ul>' +
       '<div class="bill-row bill-aside"><span>Ориентир закупки ' + tip("estimate") + '</span><b>' + m(quoted.equipment) + '</b></div>' +
@@ -460,9 +465,10 @@
       row("Интеграция iiko", "Включена", "Включена") +
       row("Базовый AI-модуль", "Включён", "Включён") +
       row("Наши работы", m(pilot.total), m(full.total)) +
+      row("К договору до 11 декабря", m(pilot.early), m(full.early)) +
       row("Закупка заведения, не входит", m(pilot.equipment), m(full.equipment)) +
       '</tbody></table><p>Общая разработка не оплачивается повторно. Подписку Higgsfield заведение оплачивает само.</p>' +
-      '<p><b>Доплата за наши работы с 1 до 5 комнат: ' + m(calc.expansionCost()) + '.</b></p></div></section>';
+      '<p><b>Доплата за наши работы с 1 до 5 комнат: ' + m(full.early - pilot.early) + '.</b> Без скидки ' + m(calc.expansionCost()) + '.</p></div></section>';
   }
 
   function timelineView(ui) {
@@ -484,7 +490,7 @@
       '<h3>' + title + '</h3><ul>' + rows.map(function (row) {
         return '<li>' + row.share + ' — ' + m(row.amount) + ' — ' + t(row.when) + '.</li>';
       }).join("") + '</ul>' +
-      '<p>Указан базовый сценарий без дополнительных модулей.</p>' +
+      '<p>Суммы со скидкой 5%, если договор подписан до ' + t(pricing.earlyDiscountUntil) + '. Указан базовый сценарий без дополнительных модулей.</p>' +
       '<p>Оборудование заведение покупает самостоятельно. В оплату работ оно не входит.</p>' +
       '<p>Налоговый режим и НДС определяются договором и статусом поставщика.</p></div></section>';
   }
@@ -524,7 +530,7 @@
   function dock(state) {
     var quoted = state.quote;
     var label = quoted.from ? "от " : "";
-    return '<div class="dock"><div><span>Сейчас</span><br><b>' + label + m(quoted.total) + '</b></div><a class="btn" href="#budget">Расчёт</a></div>';
+    return '<div class="dock"><div><span>К договору</span><br><b>' + label + m(quoted.early) + '</b></div><a class="btn" href="#budget">Расчёт</a></div>';
   }
 
   function summary(state) {
@@ -534,7 +540,8 @@
       '<h2 id="summary-title">Итог конфигурации</h2>' +
       '<p>Комнат: ' + quoted.rooms + '. Новые планшеты «Караоке»: ' + quoted.karaokeTablets + '. Новые планшеты «Сервис»: ' + quoted.serviceTablets + '.</p>' +
       '<p>Модули: ' + (chosen.length ? chosen.map(function (item) { return t(item.title) + " — от " + m(item.price); }).join("; ") : "не выбраны") + '.</p>' +
-      '<p><b>' + (quoted.from ? "Наша стоимость от " : "Наша стоимость: ") + m(quoted.total) + '</b></p>' +
+      '<p><b>' + (quoted.from ? "К договору от " : "К договору: ") + m(quoted.early) + '</b></p>' +
+      '<p>Без скидки ' + m(quoted.total) + '. Скидка 5% до ' + t(pricing.earlyDiscountUntil) + '.</p>' +
       '<p>Закупка заведения, в сумму не входит. Ориентир ' + m(quoted.equipment) + '.</p>' +
       '<p>Поддержка ' + m(pricing.supportMonthly) + '/мес. Необязательно.</p>' +
       '<p>Модули указаны «от». Предложение от ' + t(pricing.proposalDate) + '.</p>' +
