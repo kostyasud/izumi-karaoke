@@ -51,7 +51,7 @@
       budgetLabel + money.formatMoney(quoted.total),
       "К договору до " + pricing.earlyDiscountUntil + ", скидка 5%: " + (quoted.from ? "от " : "") + money.formatMoney(quoted.early),
       "",
-      "Закупка заведения, в нашу стоимость не входит:"
+      "Закупка на стороне заведения, в нашу стоимость не входит:"
     ];
     purchaseLines(quoted).forEach(function (line) { lines.push(line); });
     lines.push("Ориентир закупки: " + money.formatMoney(quoted.equipment), "", "Дополнительные модули:");

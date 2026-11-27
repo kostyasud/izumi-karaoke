@@ -466,7 +466,7 @@
       row("Базовый AI-модуль", "Включён", "Включён") +
       row("Наши работы", m(pilot.total), m(full.total)) +
       row("К договору до 11 декабря", m(pilot.early), m(full.early)) +
-      row("Закупка заведения, не входит", m(pilot.equipment), m(full.equipment)) +
+      row("Закупка на стороне заведения, не входит", m(pilot.equipment), m(full.equipment)) +
       '</tbody></table><p>Общая разработка не оплачивается повторно. Подписку Higgsfield заведение оплачивает само.</p>' +
       '<p><b>Доплата за наши работы с 1 до 5 комнат: ' + m(full.early - pilot.early) + '.</b> Без скидки ' + m(calc.expansionCost()) + '.</p></div></section>';
   }
@@ -542,7 +542,7 @@
       '<p>Модули: ' + (chosen.length ? chosen.map(function (item) { return t(item.title) + " — от " + m(item.price); }).join("; ") : "не выбраны") + '.</p>' +
       '<p><b>' + (quoted.from ? "К договору от " : "К договору: ") + m(quoted.early) + '</b></p>' +
       '<p>Без скидки ' + m(quoted.total) + '. Скидка 5% до ' + t(pricing.earlyDiscountUntil) + '.</p>' +
-      '<p>Закупка заведения, в сумму не входит. Ориентир ' + m(quoted.equipment) + '.</p>' +
+      '<p>Закупка на стороне заведения, в сумму не входит. Ориентир ' + m(quoted.equipment) + '.</p>' +
       '<p>Поддержка ' + m(pricing.supportMonthly) + '/мес. Необязательно.</p>' +
       '<p>Модули указаны «от». Предложение от ' + t(pricing.proposalDate) + '.</p>' +
       (quoted.research ? '<p>Исследовательский этап не гарантирует разработку промышленного модуля в пределах указанной суммы.</p>' : '') +
