@@ -182,15 +182,30 @@
     return '<button type="button" data-pane="' + id + '" aria-selected="' + (id === current) + '">' + label + '</button>';
   }
 
+  function icon(name) {
+    var body = {
+      trash: '<path d="M4.5 6.5h11M7 6.5V5.2A1.2 1.2 0 0 1 8.2 4h3.6A1.2 1.2 0 0 1 13 5.2v1.3M7.4 6.5l.6 8.2a1 1 0 0 0 1 .8h1.9a1 1 0 0 0 1-.8l.6-8.2"/>',
+      plus: '<path d="M10 4.5v11M4.5 10h11"/>',
+      power: '<path d="M10 3.5v6"/><path d="M6.4 5.6a5.2 5.2 0 1 0 7.2 0"/>',
+      check: '<path d="M4.5 10.5 8 14l7.5-8"/>',
+      x: '<path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/>',
+      bell: '<path d="M10 16.5a1.4 1.4 0 0 0 1.4-1.4H8.6A1.4 1.4 0 0 0 10 16.5z"/><path d="M6.2 13.2h7.6a1 1 0 0 0 .7-1.7 5 5 0 0 1-1.3-2.8V7.4a3.2 3.2 0 0 0-6.4 0v1.3a5 5 0 0 1-1.3 2.8 1 1 0 0 0 .7 1.7z"/>',
+      mic: '<rect x="7.2" y="3.2" width="5.6" height="8.2" rx="2.8"/><path d="M5.2 9.2a4.8 4.8 0 0 0 9.6 0M10 14v2.6"/>',
+      receipt: '<path d="M6 3.5h8v13l-1.6-1.1L10.8 16.5 9.2 15.4 7.6 16.5 6 15.4z"/><path d="M8 7h4M8 10h4"/>',
+      drop: '<path d="M10 3.2s4.2 4.4 4.2 7.2a4.2 4.2 0 0 1-8.4 0C5.8 7.6 10 3.2 10 3.2z"/>'
+    };
+    return '<svg class="ico" viewBox="0 0 20 20" aria-hidden="true">' + body[name] + '</svg>';
+  }
+
   function tabletHead(room, title) {
-    return '<div class="tablet-top"><div class="tablet-id"><b>' + room + '</b><span>' + title + '</span></div><span class="badge">Демо · данные не отправляются</span></div>';
+    return '<div class="tablet-top"><div class="tablet-id"><b>' + room + '</b><span>' + title + '</span></div><span class="badge">Демо</span></div>';
   }
 
   function soundPane(demoState) {
     return demoState.mics.map(function (mic, index) {
       var n = index + 1;
       return '<div class="mic"><div class="row"><b>Микрофон ' + n + '</b>' +
-        '<button type="button" data-mic-on="' + index + '" aria-pressed="' + mic.on + '">' + (mic.on ? "Включён" : "Выключен") + '</button></div>' +
+        '<button type="button" class="icon-round" data-mic-on="' + index + '" aria-pressed="' + mic.on + '" aria-label="' + (mic.on ? "Включён" : "Выключен") + '">' + icon("power") + '</button></div>' +
         '<label class="slider">Громкость <b>' + mic.volume + '</b><input data-key="vol-' + index + '" data-mic-volume="' + index + '" type="range" min="0" max="100" value="' + mic.volume + '"' + (mic.on ? "" : " disabled") + ' aria-label="Громкость микрофона ' + n + '"></label>' +
         '<label class="slider">Эффект <b>' + mic.effect + '</b><input data-key="fx-' + index + '" data-mic-effect="' + index + '" type="range" min="0" max="100" value="' + mic.effect + '"' + (mic.on ? "" : " disabled") + ' aria-label="Эффект микрофона ' + n + '"></label>' +
         '<div class="tabs preset-tabs">' + proposal.presets.map(function (preset) {
@@ -224,8 +239,9 @@
       sumRow(sums) +
       '<h3>Быстрые действия</h3><div class="quick">' + menu.actions.map(function (action) {
         var wait = cooldownLeft(demoState, action.id);
+        var glyph = action.id === "waiter" ? "bell" : action.id === "karaoke" ? "mic" : action.id === "bill" ? "receipt" : "drop";
         return '<button type="button" class="btn btn-line" data-quick="' + action.id + '" data-title="' + e(action.title) + '"' + (wait ? ' disabled' : '') + '>' +
-          t(action.title) + (wait ? ' · ' + wait + ' с' : '') + '</button>';
+          icon(glyph) + '<span>' + t(action.title) + (wait ? ' · ' + wait + ' с' : '') + '</span></button>';
       }).join("") + '</div>';
   }
 
@@ -240,7 +256,7 @@
     }
     return '<article class="menu-item" data-cat-item="' + item.category + '"><div class="row"><b>' + t(item.title) + '</b><span class="price">' + m(item.price) + '</span></div>' +
       (item.alcohol ? '<span class="badge">Подтверждает официант</span>' : '') + mods +
-      '<button type="button" class="btn btn-light btn-small" data-add="' + item.id + '">Добавить</button></article>';
+      '<button type="button" class="btn btn-light icon-round" data-add="' + item.id + '" aria-label="Добавить">' + icon("plus") + '</button></article>';
   }
 
   function cartBlock(demoState) {
@@ -251,7 +267,7 @@
         (mods ? '<span>' + t(mods) + '</span>' : '') +
         '<div class="qty"><button type="button" data-qty="' + e(line.key) + '" data-delta="-1" aria-label="Меньше">−</button><span>' + line.qty + '</span>' +
         '<button type="button" data-qty="' + e(line.key) + '" data-delta="1" aria-label="Больше">+</button>' +
-        '<button type="button" data-remove="' + e(line.key) + '">Удалить</button></div></div>';
+        '<button type="button" data-remove="' + e(line.key) + '" aria-label="Удалить">' + icon("trash") + '</button></div></div>';
     }).join("");
     return lines +
       '<label>Комментарий <textarea data-key="comment" id="cart-comment" maxlength="180">' + e(demoState.comment) + '</textarea></label>' +
@@ -287,16 +303,16 @@
     var requests = demoState.requests.map(function (request) {
       return '<div class="request"><div class="row"><b>' + t(request.title) + '</b><span class="status ' + (request.status === 'done' ? 'status-live' : 'status-wait') + '">' + requestLabel(request.status) + '</span></div>' +
         '<div class="row-actions">' +
-        (request.status === 'new' ? '<button type="button" data-request="' + request.id + '" data-next="accepted">Принять</button>' : '') +
-        (request.status === 'accepted' ? '<button type="button" data-request="' + request.id + '" data-next="done">Выполнить</button>' : '') +
+        (request.status === 'new' ? '<button type="button" class="icon-round" data-request="' + request.id + '" data-next="accepted" aria-label="Принять">' + icon("check") + '</button>' : '') +
+        (request.status === 'accepted' ? '<button type="button" class="icon-round" data-request="' + request.id + '" data-next="done" aria-label="Выполнить">' + icon("check") + '</button>' : '') +
         '</div></div>';
     }).join("") || '<p class="empty">Обращений пока нет.</p>';
     var lines = demoState.lines.map(function (line) {
       var mods = line.modifiers.map(function (mod) { return mod.title; }).join(", ");
       var actions = '';
       if (line.status === 'pending') {
-        actions = '<div class="row-actions"><button type="button" data-alcohol="' + e(line.key) + '" data-next="accepted">Подтвердить</button>' +
-          '<button type="button" data-alcohol="' + e(line.key) + '" data-next="rejected">Отклонить</button></div>';
+        actions = '<div class="row-actions"><button type="button" class="icon-round" data-alcohol="' + e(line.key) + '" data-next="accepted" aria-label="Подтвердить">' + icon("check") + '</button>' +
+          '<button type="button" class="icon-round" data-alcohol="' + e(line.key) + '" data-next="rejected" aria-label="Отклонить">' + icon("x") + '</button></div>';
       }
       return '<div class="request"><div class="row"><span>' + t(line.title) + (mods ? ' · ' + t(mods) : '') + ' × ' + line.qty + '</span><span>' + m(line.unitPrice * line.qty) + '</span></div>' +
         '<span class="status ' + statusClass(line.status) + '">' + lineLabel(line.status) + '</span>' + actions + '</div>';

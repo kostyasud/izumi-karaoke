@@ -508,16 +508,21 @@ button:hover { background: #f3efe8; }
   padding: 0;
   border-radius: 50%;
 }
+.icon-round,
 .qty button[data-remove] {
-  width: auto;
-  min-width: max-content;
-  height: 40px;
-  padding: 0 14px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 50%;
 }
+.ico { width: 18px; height: 18px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.quick .btn { gap: 8px; }
+.quick .btn .ico { flex: none; }
 .module {
   display: flex;
   flex-direction: row;
