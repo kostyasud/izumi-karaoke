@@ -435,11 +435,13 @@
         modeBtn("custom", "Своя конфигурация", state.mode) +
       '</div>' +
       '<div class="config">' +
+      '<div class="config-main">' +
       stepper("Комнат", state.rooms, "rooms", 1, 5) +
       stepper("Новые планшеты «Караоке»", state.karaokeTablets, "karaoke", 0, state.rooms) +
       stepper("Новые планшеты «Сервис»", state.serviceTablets, "service", 0, state.rooms) +
-      stepper("Приборы звука", state.soundDevices, "sound", 0, state.rooms, "Необязательно, " + m(pricing.soundDevice) + " за комнату. Например XR18: громкость и эхо с планшета.") +
+      stepper("Приборы звука", state.soundDevices, "sound", 0, state.rooms, "Необязательно, " + m(pricing.soundDevice) + ". Например XR18.") +
       bill(quoted) +
+      '</div><div class="config-side">' +
       '<h3 class="config-label">Можно добавить</h3>' +
       '<div class="modules">' + pricing.modules.map(function (item) {
         var on = state.modules[item.id] === true;
@@ -448,11 +450,11 @@
           '<button type="button" class="switch" role="switch" aria-checked="' + on + '" aria-pressed="' + on + '" data-module="' + item.id + '" aria-label="' + (on ? "Включено" : "Выключено") + '"><span>Выкл</span><span>Вкл</span></button></article>';
       }).join("") + '</div>' +
       '<h3 class="config-label">Регулярные расходы</h3><ul class="quiet">' +
-      '<li>Поддержка — ' + m(pricing.supportMonthly) + '/мес. Необязательно.</li>' +
-      '<li>Сторонние подписки — по действующим договорам.</li>' +
-      '<li>Электроэнергия и интернет — по условиям заведения.</li>' +
-      '<li>Подписка Higgsfield — по тарифу сервиса, оплачивает заведение.</li>' +
-      '</ul></div></div></section>';
+      '<li><span>Поддержка <small>Необязательно</small></span><b>' + m(pricing.supportMonthly) + '/мес</b></li>' +
+      '<li><span>Сторонние подписки</span><b>по договорам</b></li>' +
+      '<li><span>Электроэнергия и интернет</span><b>по условиям заведения</b></li>' +
+      '<li><span>Подписка Higgsfield</span><b>оплачивает заведение</b></li>' +
+      '</ul></div></div></div></section>';
   }
 
   function modeBtn(id, label, current) {
