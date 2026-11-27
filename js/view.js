@@ -45,8 +45,10 @@
             '<a href="#terms" data-nav="terms">Условия</a>' +
           '</div>' +
           '<a class="btn btn-light btn-small" href="#budget">Настроить предложение</a>' +
-          '<button type="button" class="icon-btn" id="print-btn" aria-label="Печать">Печать</button>' +
-          '<button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-label="Меню">Меню</button>' +
+          '<div class="header-tools">' +
+            '<button type="button" class="icon-btn" id="print-btn" aria-label="Печать">Печать</button>' +
+            '<button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-label="Меню">Меню</button>' +
+          '</div>' +
         '</nav>' +
         '<div class="menu-panel" id="menu-panel">' +
           '<a href="#solution">Решение</a><a href="#demo">Демонстрация</a><a href="#scope">Состав работ</a>' +
@@ -64,7 +66,7 @@
         '<h1>Пять караоке-комнат.<br>Два планшета в каждой.<br>Один понятный сервис.</h1>' +
         '<p class="lead">Собираем караоке, звук, заказы в iiko ' + tip("iiko") + ' и AI-развлечения в одном гостевом сервисе.</p>' +
         '<ul class="catalog">' +
-          '<li>Сохраняем EVOBOX ' + tip("evobox") + ', Apple TV, iPad mini 4 и пульт</li>' +
+          '<li>Сохраняем EVOBOX' + tip("evobox") + ', Apple TV, iPad mini 4 и пульт</li>' +
           '<li>Подключаем действующую iiko</li>' +
           '<li>Начинаем с одной комнаты</li>' +
         '</ul>' +

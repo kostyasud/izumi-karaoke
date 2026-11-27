@@ -68,7 +68,10 @@ h3 { margin: 0 0 8px; font-size: 22px; }
 .brand b { font-size: 22px; letter-spacing: 0.18em; font-weight: 700; }
 .brand b span { color: var(--accent); margin-right: 6px; letter-spacing: 0; }
 .brand small { color: rgba(255,255,255,0.72); font-size: 12px; }
-.nav { display: flex; align-items: center; gap: 6px; }
+.nav { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.header-tools { display: flex; align-items: center; gap: 16px; flex: none; }
+.header-tools .icon-btn,
+.header-tools .menu-btn { flex: none; white-space: nowrap; min-width: max-content; }
 .nav a, .icon-btn, .menu-btn {
   min-height: 44px;
   min-width: 44px;
@@ -562,14 +565,22 @@ textarea, input[type="text"], input[type="search"] {
 label { display: block; margin-top: 12px; }
 .slider { margin-top: 8px; }
 .hero .catalog { list-style: none; padding: 0; margin: 22px 0 0; }
-.hero .catalog li { display: flex; align-items: center; gap: 8px; min-height: 36px; }
-.hero .catalog .tip { margin-inline: -5px; }
+.hero .catalog li {
+  position: relative;
+  display: block;
+  padding-left: 18px;
+  line-height: 1.45;
+}
+.hero .catalog li + li { margin-top: 10px; }
+.hero .catalog .tip { margin: 0 2px; vertical-align: 2px; }
 .hero .catalog li::before {
   content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
   width: 7px;
   height: 7px;
   background: var(--accent);
-  flex: none;
 }
 .card ul, .limits ul, #budget ul { margin: 8px 0 0; padding-left: 18px; }
 .card li + li, .limits li + li, #budget li + li { margin-top: 6px; }
@@ -619,6 +630,7 @@ label { display: block; margin-top: 12px; }
   .anime-layout, .final, .split { grid-template-columns: 1fr; }
   .nav-links { display: none; }
   .menu-btn { display: inline-flex; }
+  .nav .btn-small { min-width: 0; padding: 8px 12px; line-height: 1.15; text-align: center; }
   .menu-panel.is-open { display: block; }
   .site-header { position: sticky; }
   .dock { display: flex; }
