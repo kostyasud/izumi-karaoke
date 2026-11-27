@@ -13,7 +13,6 @@
     animeStyle: "neon",
     animeFormat: "photo",
     pathStep: 0,
-    scopeOpen: {},
     timeline: "design",
     payment: "pilot",
     summary: false,
@@ -258,13 +257,6 @@
     var moduleButton = event.target.closest && event.target.closest("[data-module]");
     if (moduleButton) {
       stateApi.toggleModule(moduleButton.getAttribute("data-module"));
-      return;
-    }
-    var scope = event.target.closest && event.target.closest("[data-scope]");
-    if (scope) {
-      var scopeIndex = scope.getAttribute("data-scope");
-      ui.scopeOpen[scopeIndex] = !ui.scopeOpen[scopeIndex];
-      setHTML("scope-root", view.scope(ui));
       return;
     }
     var style = event.target.closest && event.target.closest("[data-style]");

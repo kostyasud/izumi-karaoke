@@ -604,7 +604,7 @@ label { display: block; margin-top: 12px; }
 .card ul, .limits ul, #budget ul { margin: 8px 0 0; padding-left: 18px; }
 .card li + li, .limits li + li, #budget li + li { margin-top: 6px; }
 .acc, .module, .card, .metric { padding: 22px; }
-.acc > button, .plain > button { margin-top: 14px; }
+.plain > button { margin-top: 14px; }
 .compare thead th {
   font-size: 13px;
   letter-spacing: 0.08em;

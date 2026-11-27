@@ -365,15 +365,11 @@
     return '<img src="img/' + file + '.jpg" alt="' + label + '" width="955" height="1280">';
   }
 
-  function scope(ui) {
+  function scope() {
     return '<section class="band" id="scope"><div class="wrap"><h2>Что входит в разработку</h2><div class="scope-grid">' +
       pricing.scope.map(function (item, index) {
-        var open = ui.scopeOpen[index] === true;
         return '<article class="acc"><div class="acc-head"><h3>' + (index + 1) + '. ' + t(item.title) + '</h3><b class="price">' + m(item.price) + '</b></div>' +
-          '<p>' + t(item.text) + '</p>' +
-          '<button type="button" data-scope="' + index + '" aria-expanded="' + open + '">' + (open ? 'Свернуть' : 'Ещё') + '</button>' +
-          (open ? '<p class="acc-panel">Эта часть входит в работы на весь объект, ' + m(calc.scopeTotal()) + '.</p>' : '') +
-          '</article>';
+          '<p>' + t(item.text) + '</p></article>';
       }).join("") +
       '</div><p class="scope-sum"><span>Работы на весь объект</span><b>' + m(calc.scopeTotal()) + '</b></p>' +
       '<p class="scope-sum"><span>К договору до 11 декабря, −5%</span><b>' + m(calc.earlyPrice(calc.scopeTotal())) + '</b></p>' +
@@ -600,7 +596,7 @@
       '<div id="scheme-root">' + scheme(ui) + '</div>' +
       '<div id="demo-root">' + demo(demoState, ui) + '</div>' +
       '<div id="anime-root">' + anime(ui) + '</div>' +
-      '<div id="scope-root">' + scope(ui) + '</div>' +
+      '<div id="scope-root">' + scope() + '</div>' +
       '<div id="budget-root">' + budget(state, ui) + '</div>' +
       compare() +
       '<div id="timeline-root">' + timelineView(ui) + '</div>' +
