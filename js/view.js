@@ -201,7 +201,7 @@
   }
 
   function soundPane(demoState) {
-    return '<p class="note">Крутилки показывают настройки EVOBOX, если система их отдаёт. Ручки Behringer отсюда не двигаются.</p>' +
+    return '<p class="note">Репертуар открывается в EvoControl и Joy Sound. Громкость и эхо пульта появятся здесь после докупки цифрового прибора в цепь микрофона.</p>' +
       demoState.mics.map(function (mic, index) {
       var n = index + 1;
       return '<div class="mic"><div class="row"><b>Микрофон ' + n + '</b>' +
