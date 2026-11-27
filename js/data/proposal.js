@@ -54,7 +54,7 @@
       }
     ],
     nodes: [
-      { id: "karaoke", title: "iPad mini 4", layer: ["sound", "all"], text: "Уже стоит в комнате: EvoControl и Joy Sound. Экран Apple TV зеркалится с него. Новый планшет караоке не покупаем." },
+      { id: "karaoke", title: "iPad mini 4", layer: ["sound", "all"], text: "Уже стоит в комнате: EvoControl и Joy Sound. Экран Apple TV зеркалится с него. Новый планшет для караоке не требуется." },
       { id: "service", title: "Планшет «Сервис»", layer: ["orders", "ai", "all"], text: "Меню, дозаказ, счёт, вызовы, мерч, услуги и AI-аниме. Планшет привязан к текущей сессии комнаты." },
       { id: "evobox", title: "EVOBOX Club", layer: ["sound", "all"], text: "Текущая караоке-система остаётся. Каталог открывается в EvoControl, режим Karaoke Room." },
       { id: "apple", title: "Apple TV / JOYSOUND", layer: ["sound", "all"], text: "Текущий вывод изображения сохраняем. Как переключать источник, настраиваем при внедрении." },
