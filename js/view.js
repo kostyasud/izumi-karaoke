@@ -439,8 +439,7 @@
       stepper("Комнат", state.rooms, "rooms", 1, 5) +
       stepper("Новые планшеты «Караоке»", state.karaokeTablets, "karaoke", 0, state.rooms) +
       stepper("Новые планшеты «Сервис»", state.serviceTablets, "service", 0, state.rooms) +
-      stepper("Приборы управления звуком", state.soundDevices, "sound", 0, state.rooms) +
-      '<p class="note">Необязательно, по одному на комнату. С ним громкость и эхо крутятся с планшета. Ориентир ' + m(pricing.soundDevice) + ' за штуку: цифровой прибор с управлением по сети, например Behringer XR18.</p>' +
+      stepper("Приборы звука", state.soundDevices, "sound", 0, state.rooms, "Необязательно, " + m(pricing.soundDevice) + " за комнату. Например XR18: громкость и эхо с планшета.") +
       bill(quoted) +
       '<h3 class="bill-next">Можно добавить</h3>' +
       '<div class="modules">' + pricing.modules.map(function (item) {
@@ -460,8 +459,9 @@
     return '<button type="button" data-mode="' + id + '" aria-selected="' + (current === id) + '"' + (id === "custom" ? ' tabindex="-1"' : '') + '>' + label + '</button>';
   }
 
-  function stepper(label, value, id, min, max) {
-    return '<div class="row"><span>' + label + '</span><div class="stepper">' +
+  function stepper(label, value, id, min, max, hint) {
+    var text = label + (hint ? '<small>' + hint + '</small>' : '');
+    return '<div class="row"><span>' + text + '</span><div class="stepper">' +
       '<button type="button" data-step="' + id + '" data-delta="-1" aria-label="Уменьшить: ' + e(label) + '"' + (value <= min ? " disabled" : "") + '>−</button>' +
       '<b>' + value + '</b>' +
       '<button type="button" data-step="' + id + '" data-delta="1" aria-label="Увеличить: ' + e(label) + '"' + (value >= max ? " disabled" : "") + '>+</button></div></div>';

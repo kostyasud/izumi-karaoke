@@ -290,7 +290,8 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 44px
 .price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .stepper { display: flex; align-items: center; gap: 6px; }
 .stepper b { min-width: 28px; text-align: center; font-size: 22px; line-height: 1; }
-#budget .row + .row { margin-top: 14px; }
+#budget .row + .row { margin-top: 8px; }
+#budget .row > span small { display: block; margin-top: 2px; font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--text-muted); }
 #budget .plain { margin-bottom: 28px; }
 #budget .actions { margin-top: 24px; }
 .scope-sum {
@@ -303,14 +304,14 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 44px
   border-top: 1px solid var(--line);
 }
 .scope-sum b { font-size: 22px; letter-spacing: -0.03em; white-space: nowrap; }
-.bill { margin-top: 20px; background: #fff; border: 1px solid var(--line); padding: 4px 20px 12px; }
+.bill { margin-top: 12px; background: #fff; border: 1px solid var(--line); padding: 4px 20px 8px; }
 .bill-row, .bill-part {
   display: flex;
   justify-content: space-between;
   gap: 16px;
   align-items: baseline;
 }
-.bill-row { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.bill-row { padding: 7px 0; border-bottom: 1px solid var(--line); }
 .bill-row b { font-size: 22px; letter-spacing: -0.03em; white-space: nowrap; }
 .bill-was b { color: var(--text-muted); font-size: 16px; font-weight: 500; text-decoration: line-through; }
 .bill-parts { list-style: none; margin: 0; padding: 2px 0 2px 18px; border-bottom: 1px solid var(--line); }
@@ -322,29 +323,29 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 44px
   justify-content: space-between;
   align-items: baseline;
   gap: 16px;
-  margin-top: 12px;
-  padding: 14px 16px;
+  margin-top: 8px;
+  padding: 10px 16px;
   background: var(--ink);
   color: #fff;
 }
-.bill-total b { font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.04em; line-height: 1; white-space: nowrap; }
-.bill-note { margin: 12px 0 0; font-size: 14px; color: var(--text-muted); }
-.bill-label { margin: 14px 0 0; font-weight: 700; }
+.bill-total b { font-size: clamp(28px, 3vw, 36px); letter-spacing: -0.04em; line-height: 1; white-space: nowrap; }
+.bill-note { margin: 8px 0 0; font-size: 14px; color: var(--text-muted); }
+.bill-label { margin: 10px 0 0; font-weight: 700; }
 .bill-aside { color: var(--text-muted); border-bottom: 0; }
 .bill-aside b { font-size: 16px; color: var(--text); }
-.bill-next { margin: 48px 0 18px; }
-#budget .modules { gap: 16px; }
+.bill-next { margin: 22px 0 10px; }
+#budget .modules { gap: 8px; }
 #budget .module {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 22px 24px;
+  gap: 16px;
+  padding: 10px 14px;
 }
-#budget .module h3 { margin: 0 0 6px; }
+#budget .module h3 { margin: 0 0 2px; font-size: 16px; line-height: 1.25; }
 #budget .module .switch { margin-top: 0; flex: none; }
 #budget .quiet { margin: 0; }
-#budget .quiet li + li { margin-top: 10px; }
+#budget .quiet li + li { margin-top: 4px; }
 #budget .actions { margin-top: 40px; gap: 14px; }
 .compare { width: 100%; border-collapse: collapse; }
 .compare th, .compare td { border-bottom: 1px solid var(--line); text-align: left; padding: 12px 8px; vertical-align: top; }
