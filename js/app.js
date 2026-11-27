@@ -23,11 +23,14 @@
   var modalReturn = null;
   var observer = null;
   var renderLock = false;
+  var seenBands = {};
+  var revealObserver = null;
 
   document.getElementById("header-mount").innerHTML = view.header();
   document.getElementById("content").innerHTML = view.page(stateApi.get(), demo.get(), ui);
   document.getElementById("dock-mount").innerHTML = view.dock(stateApi.get());
   watch();
+  armReveal();
 
   stateApi.subscribe(function () { patchBudget(); });
   demo.subscribe(function () {
@@ -53,6 +56,7 @@
     if (event.target.classList && event.target.classList.contains("tip")) hideTip();
   });
   window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
   setInterval(function () {
     var cooldowns = demo.get().cooldowns;
     var hot = Object.keys(cooldowns).some(function (id) {
@@ -64,6 +68,7 @@
   function setHTML(id, html) {
     var node = document.getElementById(id);
     if (node) node.innerHTML = html;
+    armReveal();
   }
 
   function patchBudget() {
@@ -417,9 +422,41 @@
     });
   }
 
+  function armReveal() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) return;
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var band = entry.target;
+          band.classList.add("play");
+          if (band.id) seenBands[band.id] = true;
+          revealObserver.unobserve(band);
+          setTimeout(function () {
+            band.classList.remove("play");
+            band.classList.add("seen");
+          }, 1400);
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -6% 0px" });
+    }
+    var bands = document.querySelectorAll(".band");
+    for (var i = 0; i < bands.length; i++) {
+      var band = bands[i];
+      if (band.classList.contains("hero") || band.classList.contains("play") || band.classList.contains("seen")) continue;
+      if (band.id && seenBands[band.id]) {
+        band.classList.add("seen");
+        continue;
+      }
+      revealObserver.observe(band);
+    }
+  }
+
   function onScroll() {
     var max = document.documentElement.scrollHeight - window.innerHeight;
     var bar = document.getElementById("progress");
     if (bar) bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+    var header = document.querySelector(".site-header");
+    if (header) header.classList.toggle("is-scrolled", window.scrollY > 8);
   }
 })();

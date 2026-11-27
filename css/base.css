@@ -63,7 +63,9 @@ h3 { margin: 0 0 8px; font-size: 22px; }
   color: #fff;
   border-bottom: 1px solid var(--line-light);
   backdrop-filter: blur(10px);
+  transition: box-shadow 0.3s ease;
 }
+.site-header.is-scrolled { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28); }
 .brand { display: flex; flex-direction: column; gap: 2px; color: #fff; text-decoration: none; }
 .brand b { font-size: 22px; letter-spacing: 0.18em; font-weight: 700; }
 .brand b span { color: var(--accent); margin-right: 6px; letter-spacing: 0; }
@@ -625,12 +627,71 @@ label { display: block; margin-top: 12px; }
 .progress span { transition: width 0.15s linear; }
 .modal { animation: fade 0.2s ease; }
 .toast { animation: fade 0.2s ease; }
-.hero { animation: rise 0.6s ease both; }
 .path-bar span { width: 0; animation: fill 1.1s ease forwards; }
+.hero .kicker,
+.hero h1,
+.hero .lead,
+.hero .catalog,
+.hero .actions,
+.hero .note,
+.hero .metrics-block { animation: rise 0.75s cubic-bezier(0.22, 0.7, 0.25, 1) both; }
+.hero h1 { animation-delay: 0.06s; }
+.hero .lead { animation-delay: 0.12s; }
+.hero .catalog { animation-delay: 0.18s; }
+.hero .actions { animation-delay: 0.24s; }
+.hero .note { animation-delay: 0.3s; }
+.hero .metrics-block { animation-delay: 0.36s; }
+.band.play h2,
+.band.play .lead,
+.band.play .tablet,
+.band.play .metric,
+.band.play .cards .card,
+.band.play .scope-grid .acc,
+.band.play .module,
+.band.play .limits .card,
+.band.play .faq .acc,
+.band.play .faq details { animation: rise 0.75s cubic-bezier(0.22, 0.7, 0.25, 1) both; }
+.band.play .lead { animation-delay: 0.06s; }
+.band.play .metric:nth-child(2),
+.band.play .cards .card:nth-child(2),
+.band.play .scope-grid .acc:nth-child(2),
+.band.play .module:nth-child(2),
+.band.play .limits .card:nth-child(2),
+.band.play .faq .acc:nth-child(2),
+.band.play .faq details:nth-child(2) { animation-delay: 0.08s; }
+.band.play .metric:nth-child(3),
+.band.play .cards .card:nth-child(3),
+.band.play .scope-grid .acc:nth-child(3),
+.band.play .module:nth-child(3),
+.band.play .faq .acc:nth-child(3),
+.band.play .faq details:nth-child(3) { animation-delay: 0.16s; }
+.band.play .metric:nth-child(4),
+.band.play .cards .card:nth-child(4),
+.band.play .scope-grid .acc:nth-child(4),
+.band.play .module:nth-child(4),
+.band.play .faq .acc:nth-child(4),
+.band.play .faq details:nth-child(4) { animation-delay: 0.24s; }
+.band.play .scope-grid .acc:nth-child(5),
+.band.play .module:nth-child(5),
+.band.play .faq .acc:nth-child(5),
+.band.play .faq details:nth-child(5) { animation-delay: 0.32s; }
+.band.play .scope-grid .acc:nth-child(n + 6),
+.band.play .module:nth-child(n + 6),
+.band.play .faq .acc:nth-child(n + 6),
+.band.play .faq details:nth-child(n + 6) { animation-delay: 0.4s; }
+.band.play .scheme-lines line { animation: draw 1.05s ease forwards; }
+.card, .acc, .module, .metric { transition: box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease; }
+.card:hover, .acc:hover, .module:hover, .metric:hover { box-shadow: 0 16px 36px rgba(17, 17, 17, 0.08); }
+.btn { transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+.btn:hover { transform: translateY(-1px); }
 
 @keyframes rise {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: none; }
+}
+@keyframes draw {
+  from { stroke-dasharray: 160; stroke-dashoffset: 160; }
+  to { stroke-dasharray: 160; stroke-dashoffset: 0; }
 }
 @keyframes fade {
   from { opacity: 0; }

@@ -79,7 +79,7 @@
           metric(full.rooms + " комнат", "единая платформа управления") +
           metric(full.serviceTablets + " новых планшетов", "заказ и AI, караоке остаётся на iPad mini 4") +
           metric("8–9 недель", "ориентир запуска пилота") +
-          metric(m(full.early), "к договору до 11 декабря", "Без скидки " + m(full.total) + ". Оборудование в эту сумму не входит.") +
+          metric(m(full.early), "при подписании до 11 декабря", "Без скидки\u00A0— " + m(full.total) + ". Оборудование в эту сумму не входит.") +
         '</div></div>' +
       '</div></section>';
   }
@@ -201,7 +201,8 @@
   }
 
   function soundPane(demoState) {
-    return demoState.mics.map(function (mic, index) {
+    return '<p class="note">Крутилки показывают настройки EVOBOX, если система их отдаёт. Ручки Behringer отсюда не двигаются.</p>' +
+      demoState.mics.map(function (mic, index) {
       var n = index + 1;
       return '<div class="mic"><div class="row"><b>Микрофон ' + n + '</b>' +
         '<button type="button" class="icon-round" data-mic-on="' + index + '" aria-pressed="' + mic.on + '" aria-label="' + (mic.on ? "Включён" : "Выключен") + '">' + icon("power") + '</button></div>' +
@@ -476,7 +477,7 @@
       row("Интеграция iiko", "Включена", "Включена") +
       row("Базовый AI-модуль", "Включён", "Включён") +
       row("Наши работы", m(pilot.total), m(full.total)) +
-      row("К договору до 11 декабря", m(pilot.early), m(full.early)) +
+      row("При подписании до 11 декабря", m(pilot.early), m(full.early)) +
       row("Закупка на стороне заведения, не входит", m(pilot.equipment), m(full.equipment)) +
       '</tbody></table><p>Общая разработка не оплачивается повторно. Подписку Higgsfield заведение оплачивает само.</p>' +
       '<p><b>Доплата за наши работы с 1 до 5 комнат: ' + m(full.early - pilot.early) + '.</b> Без скидки ' + m(calc.expansionCost()) + '.</p></div></section>';
@@ -552,7 +553,7 @@
       '<p>Комнат: ' + quoted.rooms + '. Новые планшеты «Караоке»: ' + quoted.karaokeTablets + '. Новые планшеты «Сервис»: ' + quoted.serviceTablets + '.</p>' +
       '<p>Модули: ' + (chosen.length ? chosen.map(function (item) { return t(item.title) + " — от " + m(item.price); }).join("; ") : "не выбраны") + '.</p>' +
       '<p><b>' + (quoted.from ? "К договору от " : "К договору: ") + m(quoted.early) + '</b></p>' +
-      '<p>Без скидки ' + m(quoted.total) + '. Скидка 5% до ' + t(pricing.earlyDiscountUntil) + '.</p>' +
+      '<p>Без скидки\u00A0— ' + m(quoted.total) + '. Скидка 5% до ' + t(pricing.earlyDiscountUntil) + '.</p>' +
       '<p>Закупка на стороне заведения, в сумму не входит. Ориентир ' + m(quoted.equipment) + '.</p>' +
       '<p>Поддержка ' + m(pricing.supportMonthly) + '/мес. Необязательно.</p>' +
       '<p>Модули указаны «от». Предложение от ' + t(pricing.proposalDate) + '.</p>' +
