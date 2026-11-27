@@ -435,23 +435,25 @@
         modeBtn("full", "Весь объект — 5 комнат", state.mode) +
         modeBtn("custom", "Своя конфигурация", state.mode) +
       '</div>' +
+      '<div class="config">' +
       stepper("Комнат", state.rooms, "rooms", 1, 5) +
       stepper("Новые планшеты «Караоке»", state.karaokeTablets, "karaoke", 0, state.rooms) +
       stepper("Новые планшеты «Сервис»", state.serviceTablets, "service", 0, state.rooms) +
       stepper("Приборы звука", state.soundDevices, "sound", 0, state.rooms, "Необязательно, " + m(pricing.soundDevice) + " за комнату. Например XR18: громкость и эхо с планшета.") +
       bill(quoted) +
-      '<h3 class="bill-next">Можно добавить</h3>' +
+      '<h3 class="config-label">Можно добавить</h3>' +
       '<div class="modules">' + pricing.modules.map(function (item) {
         var on = state.modules[item.id] === true;
         var tipKey = item.id === "sbp" ? "sbp" : item.id === "booth" ? "booth" : "";
         return '<article class="module"><div><h3>' + t(item.title) + (tipKey ? tip(tipKey) : '') + '</h3><b>от ' + m(item.price) + '</b></div>' +
           '<button type="button" class="switch" role="switch" aria-checked="' + on + '" aria-pressed="' + on + '" data-module="' + item.id + '" aria-label="' + (on ? "Включено" : "Выключено") + '"><span>Выкл</span><span>Вкл</span></button></article>';
       }).join("") + '</div>' +
-      '<h3 class="bill-next">Регулярные расходы</h3><ul class="quiet">' +
+      '<h3 class="config-label">Регулярные расходы</h3><ul class="quiet">' +
       '<li>Поддержка — ' + m(pricing.supportMonthly) + '/мес. Необязательно.</li>' +
       '<li>Сторонние подписки — по действующим договорам.</li>' +
       '<li>Электроэнергия и интернет — по условиям заведения.</li>' +
-      '<li>Подписка Higgsfield — по тарифу сервиса, оплачивает заведение.</li></ul></div></section>';
+      '<li>Подписка Higgsfield — по тарифу сервиса, оплачивает заведение.</li>' +
+      '</ul></div></div></section>';
   }
 
   function modeBtn(id, label, current) {

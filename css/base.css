@@ -290,8 +290,64 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 44px
 .price { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .stepper { display: flex; align-items: center; gap: 6px; }
 .stepper b { min-width: 28px; text-align: center; font-size: 22px; line-height: 1; }
-#budget .row + .row { margin-top: 8px; }
+#budget .config {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+}
+#budget .config .row {
+  margin: 0;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+}
+#budget .config .row + .row { margin-top: 0; }
 #budget .row > span small { display: block; margin-top: 2px; font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--text-muted); }
+#budget .config-label {
+  margin: 0;
+  padding: 16px 16px 8px;
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+#budget .bill {
+  margin: 0;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+#budget .bill-row { padding: 10px 16px; }
+#budget .bill-parts { padding: 0 16px 0 32px; }
+#budget .bill-total { margin: 0; }
+#budget .bill-note { margin: 0; padding: 10px 16px 4px; }
+#budget .bill-label { margin: 0; padding: 14px 16px 6px; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; }
+#budget .modules { display: flex; flex-direction: column; gap: 0; }
+#budget .module {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 10px 16px;
+}
+#budget .module:hover { box-shadow: none; }
+#budget .module b { font-size: 14px; font-weight: 650; color: var(--text-muted); }
+#budget .quiet {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#budget .quiet li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+  margin: 0;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+}
+#budget .quiet li + li { margin-top: 0; }
+#budget .quiet li:last-child { border-bottom: 0; }
+#budget .quiet b { font-size: 14px; font-weight: 650; color: var(--text-muted); white-space: nowrap; }
 #budget .plain { margin-bottom: 28px; }
 #budget .actions { margin-top: 24px; }
 .scope-sum {
@@ -334,18 +390,14 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 44px
 .bill-aside { color: var(--text-muted); border-bottom: 0; }
 .bill-aside b { font-size: 16px; color: var(--text); }
 .bill-next { margin: 22px 0 10px; }
-#budget .modules { gap: 8px; }
 #budget .module {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 10px 14px;
 }
 #budget .module h3 { margin: 0 0 2px; font-size: 16px; line-height: 1.25; }
 #budget .module .switch { margin-top: 0; flex: none; }
-#budget .quiet { margin: 0; }
-#budget .quiet li + li { margin-top: 4px; }
 #budget .actions { margin-top: 40px; gap: 14px; }
 .compare { width: 100%; border-collapse: collapse; }
 .compare th, .compare td { border-bottom: 1px solid var(--line); text-align: left; padding: 12px 8px; vertical-align: top; }
