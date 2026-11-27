@@ -148,12 +148,6 @@
       document.getElementById("menu-panel").classList.remove("is-open");
       document.getElementById("menu-btn").setAttribute("aria-expanded", "false");
     }
-    if (event.target.closest && event.target.closest("#print-btn")) {
-      setHTML("print-root", view.printSheet(stateApi.get()));
-      window.print();
-      return;
-    }
-
     var audience = event.target.closest && event.target.closest("[data-audience]");
     if (audience) {
       ui.audience = audience.getAttribute("data-audience");

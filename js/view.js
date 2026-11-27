@@ -46,7 +46,6 @@
           '</div>' +
           '<a class="btn btn-light btn-small" href="#budget">Настроить предложение</a>' +
           '<div class="header-tools">' +
-            '<button type="button" class="icon-btn" id="print-btn" aria-label="Печать">Печать</button>' +
             '<button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-label="Меню">Меню</button>' +
           '</div>' +
         '</nav>' +
