@@ -328,7 +328,7 @@
     var style = proposal.animeStyles.filter(function (item) { return item.id === ui.animeStyle; })[0];
     var format = proposal.animeFormats.filter(function (item) { return item.id === ui.animeFormat; })[0];
     return '<section class="band anime" id="anime"><div class="wrap"><h2>Впечатление, которое гость забирает с собой</h2>' +
-      '<p class="lead">На втором планшете гость выбирает стиль, делает фото и получает аниме-портрет, GIF или короткий оформленный ролик по личной ссылке.</p>' +
+      '<p class="lead">На втором планшете гость выбирает стиль изображения, делает фото и получает аниме-портрет, GIF или короткий оформленный ролик по личной ссылке.</p>' +
       '<div class="anime-layout"><div class="frame frame-' + format.id + '">' + illustration(style.id) +
       '<p class="note">Концептуальная иллюстрация стиля, не результат работы AI-модуля.</p></div><div>' +
       '<div class="tabs">' + proposal.animeStyles.map(function (item) {
