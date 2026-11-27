@@ -371,7 +371,7 @@
           '<p>' + t(item.text) + '</p></article>';
       }).join("") +
       '</div><p class="scope-sum"><span>Работы на весь объект</span><b>' + m(calc.scopeTotal()) + '</b></p>' +
-      '<p class="scope-sum"><span>К договору до 11 декабря, −5%</span><b>' + m(calc.earlyPrice(calc.scopeTotal())) + '</b></p>' +
+      '<p class="scope-sum"><span>При подписании договора до 11 декабря скидка −5%</span><b>' + m(calc.earlyPrice(calc.scopeTotal())) + '</b></p>' +
       '<p class="rule">Один ресторанный контур iiko и один действующий контур ReMarked ' + tip("remarked") + '. Дополнительные лицензии сторонних систем оплачиваются отдельно.</p></div></section>';
   }
 

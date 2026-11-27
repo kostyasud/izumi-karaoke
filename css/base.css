@@ -300,7 +300,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 44px
   padding-top: 14px;
   border-top: 1px solid var(--line);
 }
-.scope-sum b { font-size: 22px; letter-spacing: -0.03em; }
+.scope-sum b { font-size: 22px; letter-spacing: -0.03em; white-space: nowrap; }
 .bill { margin-top: 20px; background: #fff; border: 1px solid var(--line); padding: 4px 20px 12px; }
 .bill-row, .bill-part {
   display: flex;
