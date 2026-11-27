@@ -112,6 +112,9 @@ h3 { margin: 0 0 8px; font-size: 22px; }
 .hero-grid, .split, .two { display: grid; gap: 28px; }
 .metrics, .cards, .modules, .scope-grid { display: grid; gap: 14px; }
 .metrics { grid-template-columns: repeat(4, 1fr); margin-top: 42px; }
+.metrics-block { margin-top: 42px; }
+.metrics-block .metrics { margin-top: 0; }
+.metrics-block > .tag { margin: 0 0 14px; }
 .metric, .card, .acc, .module, .room-card {
   background: var(--paper-2);
   border: 1px solid var(--line);

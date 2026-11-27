@@ -75,19 +75,19 @@
           '<a class="btn btn-line" href="#budget">Рассчитать комплектацию</a>' +
         '</div>' +
         '<p class="note">Предложение от ' + t(pricing.proposalDate) + '. Стоимость работ фиксируется договором. Оборудование заведение покупает самостоятельно.</p>' +
-        '<div class="metrics">' +
+        '<div class="metrics-block"><p class="tag">Базовый проект</p><div class="metrics">' +
           metric(full.rooms + " комнат", "единая платформа управления") +
           metric(full.serviceTablets + " новых планшетов", "заказ и AI, караоке остаётся на iPad mini 4") +
           metric("8–9 недель", "ориентир запуска пилота") +
           metric(m(full.total), "наши работы на весь объект", "Оборудование в эту сумму не входит.") +
-        '</div>' +
+        '</div></div>' +
       '</div></section>';
   }
 
   function metric(value, caption, extra) {
     return '<article class="metric"><b>' + value + '</b><span>' + t(caption) + '</span>' +
       (extra ? '<p class="note">' + t(extra) + '</p>' : '') +
-      '<span class="tag">Базовый проект</span></article>';
+      '</article>';
   }
 
   function audience(ui) {
