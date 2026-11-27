@@ -424,7 +424,6 @@
       '<p class="bill-label">Купить самостоятельно</p>' +
       '<ul class="bill-parts">' + equipmentBill(quoted) + '</ul>' +
       '<div class="bill-row bill-aside"><span>Ориентир закупки ' + tip("estimate") + '</span><b>' + m(quoted.equipment) + '</b></div>' +
-      (quoted.research ? '<p class="bill-note">Исследовательский этап не гарантирует готовый модуль.</p>' : '') +
       '</article>';
   }
 
@@ -560,7 +559,6 @@
       '<p>Закупка на стороне заведения, в сумму не входит. Ориентир ' + m(quoted.equipment) + '.</p>' +
       '<p>Поддержка ' + m(pricing.supportMonthly) + '/мес. Необязательно.</p>' +
       '<p>Модули указаны «от». Предложение от ' + t(pricing.proposalDate) + '.</p>' +
-      (quoted.research ? '<p>Исследовательский этап не гарантирует разработку промышленного модуля в пределах указанной суммы.</p>' : '') +
       '<div class="actions"><button type="button" id="summary-copy">Скопировать</button><button type="button" id="summary-close">Закрыть</button></div></div></div>';
   }
 

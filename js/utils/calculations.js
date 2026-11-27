@@ -82,8 +82,7 @@
       extras: extras,
       total: works + extras,
       early: earlyPrice(works + extras),
-      from: extras > 0,
-      research: modules.singing === true
+      from: extras > 0
     };
   }
 
