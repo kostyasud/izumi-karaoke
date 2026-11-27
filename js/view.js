@@ -483,10 +483,10 @@
 
   function payment(ui) {
     var rows = ui.payment === "rollout" ? calc.paymentRollout() : calc.paymentPilot();
-    var title = ui.payment === "rollout" ? "Тиражирование" : "Пилот";
+    var title = ui.payment === "rollout" ? "Масштабирование" : "Пилот";
     return '<section class="band" id="payment"><div class="wrap"><h2>Поэтапная оплата работ</h2>' +
       '<div class="seg"><button type="button" data-pay="pilot" aria-selected="' + (ui.payment === "pilot") + '">Пилот</button>' +
-      '<button type="button" data-pay="rollout" aria-selected="' + (ui.payment === "rollout") + '">Тиражирование</button></div>' +
+      '<button type="button" data-pay="rollout" aria-selected="' + (ui.payment === "rollout") + '">Масштабирование</button></div>' +
       '<h3>' + title + '</h3><ul>' + rows.map(function (row) {
         return '<li>' + row.share + ' — ' + m(row.amount) + ' — ' + t(row.when) + '.</li>';
       }).join("") + '</ul>' +
