@@ -1,0 +1,64 @@
+@media print {
+  @page { margin: 14mm; }
+
+  html, body {
+    background: #fff !important;
+    color: #111 !important;
+    overflow: visible !important;
+  }
+
+  .no-print,
+  .site-header,
+  .progress,
+  .dock,
+  .toast,
+  .tip-pop,
+  .modal,
+  .tablet,
+  .demo-stage,
+  .layer-switch,
+  .scheme-list {
+    display: none !important;
+  }
+
+  .print-only { display: block !important; }
+
+  .band-night,
+  .hero,
+  .scheme,
+  .demo,
+  .anime {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .band-night h2,
+  .band-night p,
+  .hero h1,
+  .hero p,
+  .kicker { color: #111 !important; }
+
+  .wrap { max-width: none; padding: 0; }
+
+  section { break-inside: auto; page-break-inside: auto; }
+  h2, h3, .card, .acc, tr, .metric { break-inside: avoid; page-break-inside: avoid; }
+
+  .hero, .band, .modal, .toast, .path-bar span {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .acc-panel,
+  .acc-panel[hidden],
+  details:not([open]) > *:not(summary) { display: block !important; }
+
+  .scheme-board { display: block !important; height: auto !important; }
+  .node { position: static !important; display: inline-block !important; width: auto !important; margin: 4px; color: #111 !important; background: #fff !important; }
+
+  a { color: #111; text-decoration: none; }
+
+  .btn, button:not(.node), .tip { display: none !important; }
+
+  .print-keep button { display: none !important; }
+}

@@ -1,0 +1,22 @@
+:root {
+  --paper: #F6F3EE;
+  --paper-2: #FFFcf8;
+  --ink: #111111;
+  --text: #333333;
+  --text-muted: #6E6862;
+  --night: #120E16;
+  --night-2: #1C1722;
+  --night-3: #2A2333;
+  --line: rgba(17, 17, 17, 0.12);
+  --line-strong: rgba(17, 17, 17, 0.28);
+  --line-light: rgba(255, 255, 255, 0.16);
+  --accent: #D31533;
+  --amber: #E2A15A;
+  --white: #FFFFFF;
+  --ok: #1F7A4D;
+  --warn: #8A5A12;
+  --shadow: 0 18px 50px rgba(18, 14, 22, 0.08);
+  --header: 72px;
+  --max: 1320px;
+  --font: Montserrat, "Hiragino Sans", "PingFang SC", sans-serif;
+}
