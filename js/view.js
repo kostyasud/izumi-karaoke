@@ -94,7 +94,7 @@
     var current = proposal.audiences.filter(function (item) { return item.id === ui.audience; })[0] || proposal.audiences[0];
     return '<section class="band" id="solution">' +
       '<div class="wrap">' +
-        '<h2>Гость управляет отдыхом. Команда контролирует процесс.</h2>' +
+        '<h2>Гость отдыхает. Команда контролирует процесс.</h2>' +
         '<p class="lead rule">Вместо разрозненных действий — понятные шаги на планшетах и общая панель персонала.</p>' +
         '<div class="tabs" role="tablist">' + proposal.audiences.map(function (item) {
           return '<button type="button" role="tab" data-audience="' + item.id + '" aria-selected="' + (item.id === current.id) + '">' + t(item.title) + '</button>';
