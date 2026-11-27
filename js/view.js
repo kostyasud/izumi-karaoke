@@ -386,7 +386,7 @@
     var lines = [];
     if (quoted.karaokeTablets) lines.push(billPart("Планшет «Караоке»", pricing.tabletKaraoke * quoted.karaokeTablets, quoted.karaokeTablets, "", "только если решите заменить iPad mini 4"));
     if (quoted.serviceTablets) lines.push(billPart("Планшет заказа и AI", pricing.tabletService * quoted.serviceTablets, quoted.serviceTablets, "", "отдельный планшет с браузером. iPad mini 4 не меняем"));
-    if (quoted.soundDevices) lines.push(billPart("Прибор управления звуком", pricing.soundDevice * quoted.soundDevices, quoted.soundDevices, "", "цифровой прибор с управлением по сети, например Behringer XR18. Тогда громкость и эхо крутятся с планшета"));
+    if (quoted.soundDevices) lines.push(billPart("Прибор управления звуком", pricing.soundDevice * quoted.soundDevices, quoted.soundDevices, "", "цифровой прибор с управлением по сети, например Behringer XR18. Тогда громкость и эхо управляются с планшета"));
     pricing.roomParts.forEach(function (part) {
       lines.push(billPart(part.title, part.amount * quoted.rooms, quoted.rooms, part.id === "mixer" ? "mixer" : "", part.model || ""));
     });
