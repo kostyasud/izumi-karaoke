@@ -414,12 +414,13 @@
       totalLabel = "Вместе";
     }
     var prefix = quoted.from ? "от " : "";
-    return '<article class="bill">' +
+    return '<article class="bill config-card">' +
       extras +
       '<div class="bill-row bill-was"><span>' + totalLabel + '</span><b>' + prefix + m(quoted.total) + '</b></div>' +
       '<div class="bill-row"><span>−5% до 11 декабря</span><b>−' + m(quoted.total - quoted.early) + '</b></div>' +
       '<div class="bill-total"><span>К договору</span><b>' + prefix + m(quoted.early) + '</b></div>' +
       '<p class="bill-note">Скидка на наши работы, если договор подписан до ' + t(pricing.earlyDiscountUntil) + '. Закупка в неё не входит.</p>' +
+      '</article><article class="bill config-card">' +
       '<p class="bill-label">Купить самостоятельно</p>' +
       '<ul class="bill-parts">' + equipmentBill(quoted) + '</ul>' +
       '<div class="bill-row bill-aside"><span>Ориентир закупки ' + tip("estimate") + '</span><b>' + m(quoted.equipment) + '</b></div>' +
@@ -436,25 +437,27 @@
       '</div>' +
       '<div class="config">' +
       '<div class="config-main">' +
+      '<div class="config-card">' +
       stepper("Комнат", state.rooms, "rooms", 1, 5) +
       stepper("Новые планшеты «Караоке»", state.karaokeTablets, "karaoke", 0, state.rooms) +
       stepper("Новые планшеты «Сервис»", state.serviceTablets, "service", 0, state.rooms) +
       stepper("Приборы звука", state.soundDevices, "sound", 0, state.rooms, "Необязательно, " + m(pricing.soundDevice) + ". Например XR18.") +
+      '</div>' +
       bill(quoted) +
       '</div><div class="config-side">' +
-      '<h3 class="config-label">Можно добавить</h3>' +
+      '<div class="config-card"><h3 class="config-label">Можно добавить</h3>' +
       '<div class="modules">' + pricing.modules.map(function (item) {
         var on = state.modules[item.id] === true;
         var tipKey = item.id === "sbp" ? "sbp" : item.id === "booth" ? "booth" : "";
         return '<article class="module"><div><h3>' + t(item.title) + (tipKey ? tip(tipKey) : '') + '</h3><b>от ' + m(item.price) + '</b></div>' +
           '<button type="button" class="switch" role="switch" aria-checked="' + on + '" aria-pressed="' + on + '" data-module="' + item.id + '" aria-label="' + (on ? "Включено" : "Выключено") + '"><span>Выкл</span><span>Вкл</span></button></article>';
-      }).join("") + '</div>' +
-      '<h3 class="config-label">Регулярные расходы</h3><ul class="quiet">' +
+      }).join("") + '</div></div>' +
+      '<div class="config-card"><h3 class="config-label">Регулярные расходы</h3><ul class="quiet">' +
       '<li><span>Поддержка <small>Необязательно</small></span><b>' + m(pricing.supportMonthly) + '/мес</b></li>' +
       '<li><span>Сторонние подписки</span><b>по договорам</b></li>' +
       '<li><span>Электроэнергия и интернет</span><b>по условиям заведения</b></li>' +
       '<li><span>Подписка Higgsfield</span><b>оплачивает заведение</b></li>' +
-      '</ul></div></div></div></section>';
+      '</ul></div></div></div></div></section>';
   }
 
   function modeBtn(id, label, current) {

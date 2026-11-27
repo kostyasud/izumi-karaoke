@@ -293,11 +293,25 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 44px
 #budget .config {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
+  gap: 12px;
   align-items: start;
+  background: transparent;
+  border: 0;
+}
+#budget .config-main,
+#budget .config-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 0;
+}
+#budget .config-card {
   background: var(--paper-2);
   border: 1px solid var(--line);
 }
-#budget .config-main { border-right: 1px solid var(--line); }
+#budget .config-card .row:last-child,
+#budget .config-card .module:last-child,
+#budget .config-card .quiet li:last-child { border-bottom: 0; }
 #budget .config .row {
   margin: 0;
   padding: 8px 14px;
@@ -798,7 +812,7 @@ label { display: block; margin-top: 12px; }
   .wrap { width: min(100% - 28px, var(--max)); }
   .band { padding: 56px 0; }
   .cards, .scope-grid, .modules, .limits, .metrics, .staff-grid, .timeline, #terms .faq, #budget .config { grid-template-columns: 1fr; }
-  #budget .config-main { border-right: 0; border-bottom: 1px solid var(--line); }
+  #budget .config-main { border-right: 0; border-bottom: 0; }
   .compare th:first-child, .compare td:first-child { width: 42%; }
   h1 { font-size: 36px; }
 }
